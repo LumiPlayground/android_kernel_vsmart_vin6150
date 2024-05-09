@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
+ifeq ($(CONFIG_BUILD_QCOM_DT),y)
 ifeq ($(TARGET_BOARD_TYPE),auto)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 	dtbo-$(CONFIG_ARCH_SM8150) += \
@@ -586,6 +587,9 @@ dtb-$(CONFIG_ARCH_SDM429W) += sdm429-wtp.dtb\
 	sda429-bg-dvt2-wtp.dtb
 endif
 
+endif
+else
+dtb-$(CONFIG_ARCH_SM6150) += sm6150-nara.dtb
 endif
 
 ifeq ($(CONFIG_ARM64),y)

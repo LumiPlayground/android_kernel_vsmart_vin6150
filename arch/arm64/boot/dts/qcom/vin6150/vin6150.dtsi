@@ -1,0 +1,170 @@
+#include "vin6150-audio.dtsi"
+#include "vin6150-battery.dtsi"
+#include "vin6150-general.dtsi"
+#include "vin6150-pinctrl.dtsi"
+#include "vin6150-regulator.dtsi"
+
+&soc {
+	sn_fuse: snfuse@0x786134 {
+		compatible = "qcom,sn-fuse";
+		reg = <0x786134 0x04>;
+		reg-names = "sn-base";
+	};
+
+	sec_boot_fuse: secbootfuse@0x780360 {
+		compatible = "qcom,sec-boot-fuse";
+		reg = <0x780360 0x04>;
+		reg-names = "sec-boot-base";
+	};
+
+	qcom,board_id {
+		compatible = "qcom,board_id";
+		board_id0_read = <&tlmm 117 0>;
+		board_id1_read = <&tlmm 113 0>;
+		board_id2_read = <&tlmm 114 0>;
+		pinctrl-names = "id0_read", "id1_read", "id2_read",
+ 	    	"id0_release", "id1_release", "id2_release";
+		pinctrl-0 = <0xc3>;
+		pinctrl-1 = <0xc4>;
+		pinctrl-2 = <0xc5>;
+		pinctrl-3 = <0xc6>;
+		pinctrl-4 = <0xc7>;
+		pinctrl-5 = <0xc8>;
+		status = "ok";
+	};
+
+	qcom,sim_slot_detect {
+		compatible = "qcom,sim_slot_detect";
+		sim_slot_gpio = <0x8a 0x09 0x00>;
+		pinctrl-names = "pins_default_sim", "pins_cfg_sim";
+		pinctrl-0 = <0x91>;
+		pinctrl-1 = <0x92>;
+		status = "ok";
+	};
+};
+
+&tlmm {
+	wingtech_board_id0: wingtech_board_id0 {
+
+		wingtech_read_board_id0: wingtech_read_board_id0 {
+			mux {
+				pins = "gpio117";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio117";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-up;
+				input-enable;
+			};
+		};
+
+		wingtech_release_board_id0: wingtech_release_board_id0 {
+			mux {
+				pins = "gpio117";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio117";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down;
+				input-enable;
+			};
+		};
+	};
+
+	wingtech_board_id1: wingtech_board_id1 {
+
+		wingtech_read_board_id1: wingtech_read_board_id1 {
+			mux {
+				pins = "gpio113";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio113";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-up;
+				input-enable;
+			};
+		};
+
+		wingtech_release_board_id1: wingtech_release_board_id1 {
+			mux {
+				pins = "gpio113";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio113";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down;
+				input-enable;
+			};
+		};
+	};
+
+	wingtech_board_id2: wingtech_board_id2 {
+
+		wingtech_read_board_id2: wingtech_read_board_id2 {
+			mux {
+				pins = "gpio114";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio114";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-up;
+				input-enable;
+			};
+		};
+
+		wingtech_release_board_id2: wingtech_release_board_id2 {
+			mux {
+				pins = "gpio114";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio114";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-down;
+				input-enable;
+			};
+		};
+	};
+
+	wingtech_sim_slot_pins: wingtech_sim_slot_pins {
+
+		wingtech_sim_slot_gpio: wingtech_sim_slot_gpio {
+			mux {
+				pins = "gpio9";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio9";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-up;
+				input-enable;
+			};
+		};
+
+		wingtech_sim_slot_gpio_release: wingtech_sim_slot_gpio_release {
+			mux {
+				pins = "gpio9";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio9";
+				drive-strength = <2>; /* 2 MA */
+				bias-pull-up;
+				input-enable;
+			};
+		};
+	};
+};

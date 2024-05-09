@@ -1,0 +1,43 @@
+&tlmm {
+	fs16xx_irq_suspend {
+		mux {
+			pins = "gpio97";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio97";
+			bias-pull-down;
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	fs16xx_reset_active {
+		mux {
+			pins = "gpio97";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio97";
+			bias-disable;
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	fs16xx_reset_suspend {
+		mux {
+			pins = "gpio97";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio97";
+			bias-pull-down;
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+};

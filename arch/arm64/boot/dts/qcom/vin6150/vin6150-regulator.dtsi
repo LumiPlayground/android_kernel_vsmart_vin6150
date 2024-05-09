@@ -1,0 +1,3 @@
+&pm6150_l16 {
+	regulator-always-on;
+};
